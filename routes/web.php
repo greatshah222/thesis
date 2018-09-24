@@ -19,4 +19,6 @@ Route::get('/','FrontController@index')->name('name');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('contactme', 'FrontController@postContactme');
+Route::post('/store-payment','DonateController@storePayment')->name('payment.store');
 

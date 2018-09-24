@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class FrontController extends Controller
 {
@@ -80,5 +82,36 @@ class FrontController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+
+    public function postContactme(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'subject' => 'min:3',
+            'name'=>'required',
+            'message' => 'min:3']);
+
+        $data = array(
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'name'=> $request->name,
+            'bodyMessage' => $request->message
+        );
+
+        Mail::send('emails.contact', $data, function($message) use ($data){
+            $message->from($data['email']);
+            $message->to('great.shah222@gmail.com');
+            $message->subject($data['subject']);
+        });
+        Mail::send('emails.admincontact', $data, function($message) use ($data){
+            $message->to($data['email']);
+            $message->from('great.shah222@gmail.com');
+            $message->subject('Thankyou for contacting');
+        });
+
+        return redirect()->back();
     }
 }

@@ -237,35 +237,35 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4>Donate Now</h4>
                         <div class="donate_form_w3l">
-                            <h5>How much would you like to donate?</h5>
-                            <form action="#" method="post">
-                                <ul class="infor">
-                                    <li><label><input type="radio" name="dollar" value="$10" checked=""> $10.00</label></li>
-                                    <li><label><input type="radio" name="dollar" value="$15"> $20.00  </label></li>
-                                    <li><label><input type="radio" name="dollar" value="$20"> $40.00 </label></li>
-                                    <li><label><input type="radio" name="dollar" value="$25"> $50.00 </label></li>
 
-                                </ul>
+                            <form action="{{route('payment.store')}}" method="post" id="payment-form">
+                                {{ csrf_field() }}
+
+
                                 <div class="col-md-6 form-one">
-                                    <p>User Name </p>
-                                    <input type="text" name="Name" required="">
-                                    <p>User Email </p>
-                                    <input type="text" name="Email" required="">
-                                </div>
-                                <div class="col-md-6 form-one two">
-                                    <p>User Phone </p>
-                                    <input type="text" name="Phone" required="">
-                                    <p>User Password</p>
-                                    <input type="password" name="Password" placeholder="" required="">
+                                    <p> Name on card </p>
+                                    <input type="text" name="name" id="name" required="">
+
                                 </div>
                                 <div class="col-md-6 form-one">
-                                    <p>Address</p>
-                                    <textarea name="Message" placeholder="" required=" "></textarea>
+                                    <p>Email </p>
+                                    <input type="email" name="email" required="" id="email">
+
                                 </div>
-                                <div class="col-md-6 form-one two">
-                                    <p>Additional Note</p>
-                                    <textarea name="Message" placeholder="" required=" "></textarea>
+                                <br>
+                                <div class="col-md-6 form-one">
+                                    <p><label for="card-element">
+                                            Credit or debit card
+                                        </label></p>
+                                    <div id="card-element">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                    </div>
+
+                                    <!-- Used to display form errors. -->
+                                    <div id="card-errors" role="alert"></div>
+                                    <div class="clear"> </div>
                                 </div>
+
                                 <div class="clearfix"></div>
 
 
@@ -596,26 +596,27 @@
                 </div>
             </div>
             <div class="col-md-6 wthree-agile-form">
-                <form action="#" method="post">
-						<span class="input input--nariko">
-							<input class="input__field input__field--nariko" name="Name" type="text" id="input-20" placeholder=" " required="" />
-							<label class="input__label input__label--nariko" for="input-20">
+                <form action="{{ url('contactme') }}" method="post">
+                    {{ csrf_field() }}
+                    <span class="input input--nariko">
+							<input class="input__field input__field--nariko" name="name" type="text" id="name" placeholder=" " required="" />
+							<label class="input__label input__label--nariko" for="name">
 								<span class="input__label-content input__label-content--nariko">Your Name</span>
 							</label>
 						</span>
                     <span class="input input--nariko">
-							<input class="input__field input__field--nariko" name="Email" type="email" id="input-21" placeholder=" " required="" />
-							<label class="input__label input__label--nariko" for="input-21">
+							<input class="input__field input__field--nariko" name="email" type="email" id="email" placeholder=" " required="" />
+							<label class="input__label input__label--nariko" for="email">
 								<span class="input__label-content input__label-content--nariko">Your Email</span>
 							</label>
 						</span>
                     <span class="input input--nariko">
-							<input class="input__field input__field--nariko" name="Subject" type="text" id="input-22" placeholder=" " required="" />
-							<label class="input__label input__label--nariko" for="input-22">
+							<input class="input__field input__field--nariko" name="subject" type="text" id="subject" placeholder=" " required="" />
+							<label class="input__label input__label--nariko" for="subject">
 								<span class="input__label-content input__label-content--nariko">Your Subject</span>
 							</label>
 						</span>
-                    <textarea name="Message" placeholder="Your Message..." required=""></textarea>
+                    <textarea name="message" placeholder="Your Message..." id="message" required=""></textarea>
                     <input type="submit" value="Send">
                 </form>
             </div>
