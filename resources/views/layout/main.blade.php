@@ -1,4 +1,3 @@
-@include('_includes.navbar.head')
 
         <!DOCTYPE html>
 <html lang="zxx">
@@ -24,6 +23,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
+@include('_includes.navbar.head')
+<br>
+
 @yield('value')
 @include('_includes.navbar.footer')
 
