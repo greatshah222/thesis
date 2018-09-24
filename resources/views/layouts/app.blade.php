@@ -25,6 +25,8 @@
     <link href="{{asset('dist1/css/lsb.css')}}" rel="stylesheet" type="text/css"> <!-- gallery-css -->
     <!-- //css files -->
     <link href="{{asset('dist/css/styleform.css')}}" rel="stylesheet" type="text/css" media="all" /> <!-- Nav-CSS -->
+    <link href="{{asset('main/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+
 
 
     <!-- online-fonts -->

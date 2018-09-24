@@ -622,9 +622,11 @@
 
             <div class="clearfix"> </div>
         </div>
+
     </div>
 </div>
 
 
-<!-- start-smoth-scrolling -->
+
+        <!-- start-smoth-scrolling -->
     @endsection

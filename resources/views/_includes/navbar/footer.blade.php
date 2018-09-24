@@ -1,3 +1,4 @@
+
 <div class="footer">
     <div class="col-md-3 footer-left-agileits">
         <h3>Address</h3>
@@ -29,27 +30,33 @@
         <h3>Flickr feed</h3>
         <div class="flickr-grids">
             <div class="flickr-grid">
-                <a href="#"><img src="images/f1.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="flickr-grid">
-                <a href="#"><img src="images/f2.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="flickr-grid">
-                <a href="#"><img src="images/f3.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="clearfix"> </div>
 
             <div class="flickr-grid">
-                <a href="#"><img src="images/f2.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="flickr-grid">
-                <a href="#"><img src="images/f4.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="flickr-grid">
-                <a href="#"><img src="images/f1.jpg" alt=" " class="img-responsive"></a>
+                <a href="#"><img src="{{asset('main/images/f1.jpg')}}" alt=" " class="img-responsive"></a>
             </div>
             <div class="clearfix"> </div>
         </div>
     </div>
     <div class="clearfix"></div>
+</div>
+<div class="copyright-w3-agile">
+    <div class="container">
+        <p>© 2017 Befriend. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+        <div class="clearfix"> </div>
+    </div>
 </div>
