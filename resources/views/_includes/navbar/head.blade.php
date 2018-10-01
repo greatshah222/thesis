@@ -88,9 +88,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li><a href="#"><i class=" fa fa-user">Profiles</i>
 
                                                </a></li>
-                                        <li><a href="#"><i class="fa fa-cog">Manage</i> </a></li>
-                                        <li><a href="#"><i class="fa fa-bell">Notification</i> </a></li>
+                                        <li>
 
+                                            <a href="{{asset('manage')}}"><i class="fa fa-cog">Manage</i> </a></li>
 
                                     </ul>
                                 </li>
@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                         </li>
-                        <li><a href="#">Donate</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal5">Donate</a></li>
 
                         <li><a href="#">Contact</a></li>
                     </ul>
