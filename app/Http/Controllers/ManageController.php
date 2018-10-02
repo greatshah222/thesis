@@ -13,11 +13,13 @@ class ManageController extends Controller
 
     public function index()
     {
-        return redirect()->route('manage.dashboard');
+        return redirect()->route('manage.dashboard')->with('settings',Setting::first());
     }
     public function dashboard()
     {
        return view('manage.dashboard')
+           ->with('settings',Setting::first())
+
           // ->with('posts_count',Post::all()->count())
           //  ->with('trashed_count',Post::onlyTrashed()->get()->count())
            // ->with('users_count',User::all()->count())

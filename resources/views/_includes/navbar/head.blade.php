@@ -42,10 +42,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="col-md-9 top-left">
                 <ul>
-                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>Bagbazar,Kathmadu
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{$settings->address }}
                     </li>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i> +9779841331624 </li>
-                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="#">info@villagedev.com</a></li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> {{$settings->contact_number }}</li>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="#">{{$settings->contact_email }}</a></li>
                 </ul>
             </div>
             <div class="col-md-3 top-middle">
@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <h1><a href="{{url('/')}}">Village Dev</a></h1>
+                    <h1><a href="{{url('/')}}">{{$settings->site_name }}</a></h1>
                 </div>
                 <!-- navbar-header -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="dropdown-menu" id="menu">
                                         <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out" aria-hidden="true">Logout</i>
                                                 </a></li>
-                                        <li><a href="#"><i class=" fa fa-user">Profiles</i>
+                                        <li><a href="{{asset('profile')}}"><i class=" fa fa-user">Profiles</i>
 
                                                </a></li>
                                         <li>

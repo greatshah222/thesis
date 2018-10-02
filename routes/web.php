@@ -31,9 +31,32 @@ Route::prefix('manage')->middleware('admin')->group(function (){
 
 
 });
+Route::resource('/profile','ProfilesController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('contactme', 'FrontController@postContactme');
 Route::post('/store-payment','DonateController@storePayment')->name('payment.store');
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::get('/photo','PhotoController@index')->name('photo');
+
+    Route::get('/photocreate','PhotoController@create')->name('photo.create');
+
+    Route::post('photome', 'PhotoController@store')->name('photo.store');
+    Route::delete('photo/{id}','PhotoController@destroy')->name('photo.destroy');
+});
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/settings','SettingsController@index')->name('settings');
+    Route::post('/settings/update','SettingsController@update')->name('settings.update');
+
+
+
+});
+Route::resource('personals','PersonalController');
+
+
 
 

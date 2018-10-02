@@ -77,17 +77,12 @@
 
         </div>
         <div class="col-md-8 agileits_about_right">
-            <p>Duis turpis arcu, dictum eu tincidunt id, congue vel urna. Quisque posuere,
-                ipsum eu faucibus cursus, ex tortor elementum leo, eget varius lorem quam a nisl.
-                Mauris ut enim sed tortor auctor luctus at vitae est. Nunc erat odio, blandit
-                eget nisl ac, laoreet condimentum elit. <i>Duis dignissim auctor rhoncus.
-                    Curabitur diam lorem, ultricies eu pellentesque sed, elementum sodales urna.
-                    Pellentesque molestie maximus nisl at ultrices.</i></p>
+            <p>{{$settings->about_us_big}} <i>{{$settings->about_us_small}}</i></p>
             <ul>
-                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Donate</li>
-                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Fundraise</li>
-                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Participate</li>
-                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Contribute</li>
+                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{$settings->about_us_nutshell1}}</li>
+                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{$settings->about_us_nutshell2}}</li>
+                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{$settings->about_us_nutshell3}}</li>
+                <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{$settings->about_us_nutshell4}}</li>
             </ul>
         </div>
         <div class="clearfix"> </div>
@@ -287,153 +282,26 @@
 <div class="gallery" id="gallery">
     <div class="container">
         <div class="title-agileits">
-            <h3>Donations</h3>
+            <h3>GAllERY</h3>
         </div>
         <div class="agileinfo_gallery_grids">
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="{{asset('main/images/v1.jpg')}}" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="{{asset('main/images/v1.jpg')}}" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
+            @foreach($photos as $photo)
+
+                <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
+                    <div class="grid">
+                        <a href="{{asset('postphotoimages/'.$photo->featured_image)}}" class="lsb-preview" data-lsb-group="header">
+                            <figure class="effect-winston">
+                                <img src="{{asset('postphotoimages/'.$photo->featured_image)}}" class="img-responsive" alt=" " />
+                                <figcaption>
+                                    <p>
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true">{{$photo->title}}</span>
+                                    </p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="{{asset('main/images/v1.jpg')}}" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g2.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="images/g3.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g3.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-                <div class="grid">
-                    <a href="images/g4.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g4.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-                <div class="grid">
-                    <a href="images/g5.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g5.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-                <div class="grid">
-                    <a href="images/g6.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g6.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="images/g8.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g8.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="images/g9.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g9.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4 w3_tabs_grid">
-                <div class="grid">
-                    <a href="images/g2.jpg" class="lsb-preview" data-lsb-group="header">
-                        <figure class="effect-winston">
-                            <img src="images/g2.jpg" class="img-responsive" alt=" " />
-                            <figcaption>
-                                <p>
-                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
+            @endforeach
             <div class="clearfix"> </div>
         </div>
 
