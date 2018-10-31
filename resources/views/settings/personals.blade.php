@@ -11,7 +11,7 @@
 
 
 
-                    <a href="{{route('personals.create')}}" class="btn btn-info btn-lg " role="button" aria-pressed="true"><i class="fa fa-user-plus m-l-10"></i> Add New Employee Info</a>
+                    <a href="{{route('personals.create')}}" class="btn btn-info btn-lg " role="button" aria-pressed="true"><i class="fa fa-user-plus m-l-10"></i> Add New </a>
 
 
 
@@ -30,7 +30,7 @@
                 '
                 <br>
                 <br><br><br>
-                <div class="col-md-8 col-md-offset-2   ">
+                <div class="col-md-10  ">
 
                     <hr>
                     <table class="table table-hover table-striped">
@@ -82,8 +82,13 @@
 
 
                                 <td>
-                                <th><a href="{{route('personals.edit',$personal->id)}}" class="btn btn-primary btn-sm" role="button">Edit</a> </th>
+                                <a href="{{route('personals.edit',$personal->id)}}" class="btn btn-primary btn-sm" role="button">Edit</a>
 
+                                </td>
+                                <td>
+                                    {!! Form::open(['route'=>['personals.destroy', $personal->id],'method'=>'DELETE']) !!}
+                                    {!! Form::submit('Delete',['class'=>'btn btn-danger btn-sm']) !!}
+                                    {!! Form::close() !!}
                                 </td>
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Photo;
 use App\Setting;
+use App\Personal;
 
 
 
@@ -20,8 +21,10 @@ class FrontController extends Controller
     public function index()
     {
         $photos=Photo::orderByRaw('RAND()')->limit(9)->get();
+        $personals=Personal::orderBy('id','desc')->limit(4)->get();
 
-        return view('front.home')->withPhotos($photos)->with('settings',Setting::first());
+
+        return view('front.home')->withPhotos($photos)->with('settings',Setting::first())->withPersonals($personals);
     }
 
     /**

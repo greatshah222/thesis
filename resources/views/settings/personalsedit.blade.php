@@ -3,7 +3,7 @@
         <div class="row">
             @extends('layouts.manage')
             <div class="row">
-                <div class="col-md-10 ">
+                <div class="col-md-8 col-md-offset-2 ">
                     <h1 class="title">Edit Employee Information</h1>
                 </div>
 
@@ -14,6 +14,8 @@
 
                     <hr>
                     <form action="{{route('personals.update',$personal->id)}}" method="post" enctype="multipart/form-data">
+                        {{method_field('PUT')}}
+
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="employee_name"> Employee Name</label>
@@ -33,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="employee_instagram_link"> Instragam Link</label>
-                            <input type="text" class="form-control" id="employee_instagram_link"   name="employee_instagram_linkk" value="{{$personal->employee_instagram_link}}">
+                            <input type="text" class="form-control" id="employee_instagram_link"   name="employee_instagram_link" value="{{$personal->employee_instagram_link}}">
                         </div>
                         <div class="form-group">
                             <label for="employee_google_link"> GoogleLink</label>
@@ -47,7 +49,7 @@
 
 
 
-                        <button type="submit" class="btn btn-success">Create Employee </button>
+                        <button type="submit" class="btn btn-success form-control">Edit Employee Information </button>
                     </form>
 
                 </div>

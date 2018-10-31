@@ -130,66 +130,28 @@
             <h3>Donators</h3>
         </div>
         <div class="agileits_w3layouts">
+            @foreach($personals as $personal)
+
+
             <div class="col-md-3 team-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h5>Thom<span>son</span></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipi. </p>
+                <h5>{{$personal->employee_name}}</h5>
+                <p>L{{$personal->employee_info}} </p>
                 <div class="social-bnr-agileits about-agile">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="{{$personal->employee_fb_link}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="{{$personal->employee_twitter_link}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="{{$personal->employee_google_link}}"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="{{$personal->employee_instragam_link}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
                 <div class="team-img">
-                    <img src="images/t1.jpg" alt="">
+                    <img src="{{asset('employeeimage/'.$personal->featured_employee_image)}}" class="img-responsive" alt=" " />
+
+
                 </div>
             </div>
-            <div class="col-md-3 team-grids team-mdl wow fadeInUp animated" data-wow-delay=".5s">
-                <h5>Mary <span>Doe</span></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipi. </p>
-                <div class="social-bnr-agileits about-agile">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="team-img">
-                    <img src="images/t2.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 team-grids team-mdl1 wow fadeInUp animated" data-wow-delay=".5s">
-                <h5>Victo<span>ria</span></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipi. </p>
-                <div class="social-bnr-agileits about-agile">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="team-img">
-                    <img src="images/t3.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-md-3 team-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h5>Patrick <span>Pool</span></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipi. </p>
-                <div class="social-bnr-agileits about-agile">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="team-img">
-                    <img src="images/t4.jpg" alt="">
-                </div>
-            </div>
+            @endforeach
+
             <div class="clearfix"> </div>
         </div>
     </div>

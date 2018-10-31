@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Personal;
 use App\Setting;
 use Image;
+use Illuminate\Support\Facades\Storage;
+
 
 class PersonalController extends Controller
 {
@@ -39,6 +41,11 @@ class PersonalController extends Controller
     {
         $this->validate($request, array(
             'employee_name' => 'required|max:255',
+            'employee_info' => 'required|max:255',
+            'employee_fb_link' => 'required|max:255',
+            'employee_twitter_link' => 'required|max:255',
+            'employee_google_link' => 'required|max:255',
+            'employee_instagram_link' => 'required|max:255',
             'featured_employee_image'=>'sometimes|image'
 
 
@@ -103,7 +110,42 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'employee_name' => 'required|max:255',
+            'employee_info' => 'required|max:255',
+            'employee_fb_link' => 'required|max:255',
+            'employee_twitter_link' => 'required|max:255',
+            'employee_google_link' => 'required|max:255',
+            'employee_instagram_link' => 'required|max:255',
+            'featured_employee_image'=>'sometimes|image'
+
+
+
+        ));
+
+        $personals = Personal::find($id);
+        $personals->employee_name = $request->input('employee_name') ;
+
+        $personals->employee_info = $request->input('employee_info');
+        $personals->employee_fb_link = $request->input('employee_fb_link');
+        $personals->employee_twitter_link = $request->input('employee_twitter_link');
+        $personals->employee_google_link = $request->input('employee_google_link');
+        $personals->employee_instagram_link = $request->input('employee_instagram_link');
+
+        if($request->hasFile('featured_employee_image'))
+        {
+            $image = $request->file('featured_employee_image');
+            $filename =time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('employeeimage/' .$filename);
+            Image::make($image)->resize(640,426)->save($location);
+
+            $oldFileName=$personals->featured_employee_image;
+            $personals->featured_employee_image =$filename;
+            Storage::delete($oldFileName);
+
+        }
+        $personals->save();
+        return redirect()->route('personals.index');
     }
 
     /**
@@ -114,6 +156,10 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $personals = Personal::find($id);
+        $personals->delete();
+
+
+        return redirect()->back();
     }
 }
