@@ -20,14 +20,14 @@ class ManageController extends Controller
        return view('manage.dashboard')
            ->with('settings',Setting::first())
 
-          // ->with('posts_count',Post::all()->count())
-          //  ->with('trashed_count',Post::onlyTrashed()->get()->count())
-           // ->with('users_count',User::all()->count())
-           // ->with('categories_count',Category::all()->count())
-           // ->with('tags_count',Tag::all()->count())
+          ->with('posts_count',Post::all()->count())
+            ->with('trashed_count',Post::onlyTrashed()->get()->count())
+          ->with('users_count',User::all()->count())
+          ->with('categories_count',Category::all()->count())
+           ->with('tags_count',Tag::all()->count())
 
 
-           // ->with('settings',Setting::first())
+            ->with('settings',Setting::first())
             ;
 
     }

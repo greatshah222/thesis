@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use App\Front;
 use App\Tag;
+use App\Setting;
 
 use Illuminate\Support\Facades\Storage;
 use Image;
@@ -25,7 +26,7 @@ class PostController extends Controller
         //create a variable a store the variable in in form the database
 
         $posts=Post::orderBy('id','desc')->paginate(5);
-        return view('posts.index')->withPosts($posts)
+        return view('posts.index')->withPosts($posts)->with('settings',Setting::first())
             ;
         // return a viewa nd padd in tyhe above
 
@@ -44,7 +45,7 @@ class PostController extends Controller
         $tags=Tag::all();
 
 
-        return view('posts.create')->withCategories($categories)->withTags($tags);
+        return view('posts.create')->withCategories($categories)->withTags($tags)->with('settings',Setting::first());
     }
 
     /**

@@ -33,6 +33,21 @@ Route::prefix('manage')->middleware('admin')->group(function (){
 });
 Route::resource('/profile','ProfilesController');
 
+Route::resource('posts','PostController');
+Route::resource('categories','CategoryController',['except'=>['create']]);
+Route::resource('tags','TagController',['except'=>['create']]);
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('blog/{slug}','BlogController@getSingle')->name('blog.single')->where('slug','[\w\d\-\_]+');
+    Route::get('blog','BlogController@getIndex')->name('blog.index');
+
+});
+
+Route::resource('categories','CategoryController',['except'=>['create']]);
+Route::resource('tags','TagController',['except'=>['create']]);
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('contactme', 'FrontController@postContactme');
 Route::post('/store-payment','DonateController@storePayment')->name('payment.store');

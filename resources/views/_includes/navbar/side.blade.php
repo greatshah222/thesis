@@ -32,7 +32,7 @@
                     </a>
                     <!-- Sub menu -->
                     <ul>
-                        <li><a href="">View Category</a></li>
+                        <li><a href="{{route('categories.index')}}">View Category</a></li>
 
                     </ul>
 
@@ -48,7 +48,7 @@
                     </a>
                     <!-- Sub menu -->
                     <ul>
-                        <li><a href="">View tags</a></li>
+                        <li><a href="{{route('tags.index')}}">View tags</a></li>
 
                     </ul>
 
