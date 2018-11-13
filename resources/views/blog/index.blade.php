@@ -2,6 +2,7 @@
 
 
 @section('value')
+    <br><br>
     <link href="{{asset('dist1/css/blog.css')}}" rel="stylesheet" type="text/css" media="all" /> <!-- Nav-CSS -->
 
 
@@ -10,7 +11,7 @@
         <div class="technology">
 
             <div class="container">
-            <div class="col-md-7 technology-left">
+            <div class="col-md-7  technology-left">
 
                 <div class="tech-no">
 
@@ -49,14 +50,16 @@
                     </div>
                     @endforeach
                     <div class="blog-grids">
-                        <div class="blog-grid-left">
-                            <h2>View more </h2>
-                        </div>
+                        <h4 style="margin-left: 300px">VIEW MORE</h4>
+                        <div class="clearfix"> </div>
+
+
                         <div class="blog-grid-right" style="margin-left: 300px">
                             {{$posts->links()}}
 
 
                         </div>
+
                         <div class="clearfix"> </div>
                     </div>
 
@@ -71,10 +74,10 @@
             </div>
 
             </div>
-                <div class="col-md-3 technology-right-1">
+                <div class="col-md-3 col-md-offset-1 technology-right-1">
                     <div class="blo-top">
                         <div class="tech-btm">
-                            <img src="images/banner1.jpg" class="img-responsive" alt=""/>
+                            <img src="{{asset('galleryimages/banner1.jpg')}}" class="img-responsive" alt=""/>
                         </div>
                     </div>
                     <div class="blo-top">
@@ -117,25 +120,33 @@
 
                             </div>
                         <div class="tech-btm">
+                            <h3><a href="{{url('blog/'.$post->slug)}}">{{$post->title}}</a></h3>
                             <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <h2>View more </h2>
+                                <div class="blog-grid-left">
+                                    <a href="{{asset('postimages/'.$post->featured)}}"><img src="{{asset('postimages/'.$post->featured)}}" class="img-responsive" alt="djsb"/></a>
+                                </div>
+                                <div class="blog-grid-right">
+
+                                    <h5><a href="{{url('blog/'.$post->slug)}}">{{substr(strip_tags($post->body) ,0,100)}} {{strlen(strip_tags($post->body) ) > 1000 ? " ..." : " "}}</a></h5>
+                                </div>
+                                <div class="clearfix"> </div>
                             </div>
 
-                                {{$posts->links()}}
+                        </div>
 
 
-                            </div>
+
+
                             <div class="clearfix"> </div>
                         </div>
-                    </div>
+
 
                 </div>
                 <div class="clearfix"></div>
                 <!-- technology-right -->
             </div>
         </div>
-    @include('_includes.navbar.footer')
+    <br><br><br><br>
 @endsection
 <!-- technology -->
 <!-- footer -->

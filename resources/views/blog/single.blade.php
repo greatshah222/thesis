@@ -79,7 +79,7 @@
         <div class="col-md-3 technology-right-1">
             <div class="blo-top">
                 <div class="tech-btm">
-                    <img src="images/banner1.jpg" class="img-responsive" alt=""/>
+                    <img src="{{asset('galleryimages/banner2.jpg')}}" class="img-responsive" alt=""/>
                 </div>
             </div>
             <div class="blo-top">
@@ -108,14 +108,14 @@
                 @foreach($posts as $post)
 
                 <div class="tech-btm">
-                    <h3><a href="{{url('blog/'.$post->slug)}}">{{$post->title}}</a></h3>
+                    <h5><a href="{{url('blog/'.$post->slug)}}">{{$post->title}}</a></h5>
                     <div class="blog-grids">
                         <div class="blog-grid-left">
                             <a href="{{asset('postimages/'.$post->featured)}}"><img src="{{asset('postimages/'.$post->featured)}}" class="img-responsive" alt="djsb"/></a>
                         </div>
                         <div class="blog-grid-right">
 
-                            <h5><a href="{{url('blog/'.$post->slug)}}">{{substr(strip_tags($post->body) ,0,100)}} {{strlen(strip_tags($post->body) ) > 1000 ? " ..." : " "}}</a></h5>
+                            <h7><a href="{{url('blog/'.$post->slug)}}">{{substr(strip_tags($post->body) ,0,100)}} {{strlen(strip_tags($post->body) ) > 1000 ? " ..." : " "}}</a></h7>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
@@ -129,7 +129,6 @@
         <!-- technology-right -->
     </div>
 </div>
-@include('_includes.navbar.footer')
 @endsection
 <!-- technology -->
 <!-- footer -->

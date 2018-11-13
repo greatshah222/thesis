@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 100%;
-    background: #e5e5e5;
+    background: whitesmoke;
 }
 body a,.grid_1,i.icon1, i.icon2, i.icon3, i.icon4, i.icon5, i.icon6 {
     transition:0.5s all;
