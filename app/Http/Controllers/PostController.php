@@ -91,7 +91,7 @@ class PostController extends Controller
         Session::flash('success','Post Successfully Created');
 
 
-        return redirect()->route('posts.show',$post->id);
+        return redirect()->route('posts.show',$post->id) ->with('settings',Setting::first());
 
 
 
@@ -111,7 +111,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post= Post::find($id);
-        return view('posts.show')->withPost($post);
+        return view('posts.show')->withPost($post) ->with('settings',Setting::first());
 
     }
 
@@ -138,7 +138,7 @@ class PostController extends Controller
             $tags2[$tag->id] =$tag->name;
         }
 
-        return view('posts.edit')->withPost($post)->withCategories($cats)->withTags($tags2);
+        return view('posts.edit')->withPost($post)->withCategories($cats)->withTags($tags2) ->with('settings',Setting::first());
 
         // return view and pass the info
 
@@ -195,7 +195,7 @@ class PostController extends Controller
 
 
 
-        return redirect()->route('posts.show',$post->id);
+        return redirect()->route('posts.show',$post->id) ->with('settings',Setting::first());
 
 
     }
@@ -212,7 +212,7 @@ class PostController extends Controller
         $post->delete();
         Session::flash('success','Post Sent to trash');
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index') ->with('settings',Setting::first());
 
 
     }
@@ -232,7 +232,7 @@ class PostController extends Controller
         $post->forceDelete();
         Session::flash('success','Post Successfully Deleted');
 
-        return redirect()->route('posts.trashed');
+        return redirect()->route('posts.trashed') ->with('settings',Setting::first());
 
 
 
@@ -244,7 +244,7 @@ class PostController extends Controller
         $post->restore();
         Session::flash('success','Post Restored');
 
-        return redirect()->route('posts.trashed');
+        return redirect()->route('posts.trashed') ->with('settings',Setting::first());
 
 
     }

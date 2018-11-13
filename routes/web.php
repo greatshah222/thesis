@@ -18,7 +18,7 @@ Route::get('/','FrontController@index')->name('name');
 
 
 Auth::routes();
-Route::prefix('manage')->middleware('admin')->group(function (){
+Route::prefix('manage')->middleware('web')->group(function (){
 
     Route::get('/','ManageController@index');
     Route::get('/dashboard','ManageController@dashboard')->name('manage.dashboard');
@@ -31,9 +31,15 @@ Route::prefix('manage')->middleware('admin')->group(function (){
 
 
 });
+
 Route::resource('/profile','ProfilesController');
 
+
 Route::resource('posts','PostController');
+Route::get('posts/trashed','PostController@trashed')->name('posts.trashed');
+Route::get('posts/kill/{id}','PostController@kill')->name('posts.kill');
+Route::get('posts/restore/{id}','PostController@restore')->name('posts.restore');
+
 Route::resource('categories','CategoryController',['except'=>['create']]);
 Route::resource('tags','TagController',['except'=>['create']]);
 
@@ -44,6 +50,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('blog','BlogController@getIndex')->name('blog.index');
 
 });
+// comments
+Route::post('comments/{post_id}','CommentsController@store')->name('comments.store');
+
+Route::get('comments/{id}/edit','CommentsController@edit')->name('comments.edit');
+Route::get('comments/{id}/delete','CommentsController@delete')->name('comments.delete');
+
+
+Route::put('comments/{id}','CommentsController@update')->name('comments.update');
+Route::delete('comments/{id}','CommentsController@destroy')->name('comments.destroy');
 
 Route::resource('categories','CategoryController',['except'=>['create']]);
 Route::resource('tags','TagController',['except'=>['create']]);
@@ -53,7 +68,7 @@ Route::post('contactme', 'FrontController@postContactme');
 Route::post('/store-payment','DonateController@storePayment')->name('payment.store');
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'web'], function () {
 
     Route::get('/photo','PhotoController@index')->name('photo');
 

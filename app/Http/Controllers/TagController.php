@@ -43,7 +43,7 @@ class TagController extends Controller
         $tag ->save();
         Session::flash('success','Tag Successfully Created');
 
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index') ->with('settings',Setting::first());
 
     }
 
@@ -56,7 +56,7 @@ class TagController extends Controller
     public function show($id)
     {
         $tag =Tag::find($id);
-        return view('tags.show')->withTag($tag);
+        return view('tags.show')->withTag($tag) ->with('settings',Setting::first());
     }
 
     /**
@@ -68,7 +68,7 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag=Tag::find($id);
-        return view('tags.edit')->withTag($tag);
+        return view('tags.edit')->withTag($tag) ->with('settings',Setting::first());
     }
 
     /**
@@ -87,7 +87,7 @@ class TagController extends Controller
         $tag->save();
         Session::flash('success','Tag Successfully Updated');
 
-        return redirect()->route('tags.show',$tag->id);
+        return redirect()->route('tags.show',$tag->id) ->with('settings',Setting::first());
     }
 
     /**
@@ -103,6 +103,6 @@ class TagController extends Controller
         $tag->delete();
         Session::flash('success','Tag Successfully Deleted');
 
-        return redirect()->route('tags.index');
+        return redirect()->route('tags.index') ->with('settings',Setting::first());
     }
 }
