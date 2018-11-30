@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
+use App\ForumModel\Fcategory;
+use App\ForumModel\Question;
+use App\ForumModel\Reply;
+use App\ForumModel\Like;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
+        //$this->call(UsersTableSeeder::class);
         //$this->call(SettingsTableSeeder::class);
-
+        factory(User::class, 2)->create();
+        factory(Fcategory::class, 2)->create();
+        factory(Question::class, 2)->create();
+        factory(Reply::class, 5)->create()->each(function ($reply) {
+            return $reply->like()->save(factory(Like::class)->make());
+        });
     }
 }
