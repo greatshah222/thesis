@@ -7,19 +7,29 @@ use App\User;
 
 class Question extends Model
 {
+    protected $guarded = [];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user()
     {
-        return $†his->belongsTo(User::class);
-
+        return $this->belongsTo(User::class);
     }
     public function replies()
     {
-        return $†his->hasMany(Reply::class);
-    }
-
-    public function fcategory()
-    {
-        return $†his->belongsTo(Fcategory::class);
+        return $this->hasMany(Reply::class)->latest();
     }
     
+    public function fcategory()
+    {
+        return $this->belongsTo(Fcategory::class);
+    }
+    public function getPathAttribute()
+    {
+        return "/question/$this->slug";
+    }
 }
