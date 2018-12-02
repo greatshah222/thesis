@@ -6,6 +6,8 @@ use App\ForumModel\Question;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\QuestionResource;
+use App\User;
+
 
 class QuestionController extends Controller
 {
@@ -16,7 +18,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-      return Question::latest()->get();
+        return QuestionResource::collection(Question::latest()->get());
     }
 
     /**
@@ -48,7 +50,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        return new QuestionResource($question);  
+        return new QuestionResource($question);
 
   }
 
@@ -72,7 +74,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return response('Update', Response::HTTP_ACCEPTED);
     }
 
     /**

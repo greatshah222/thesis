@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\ForumModel\Fcategory;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\FcategoryResource;
+
+
 
 class FcategoryController extends Controller
 {
@@ -14,7 +18,9 @@ class FcategoryController extends Controller
      */
     public function index()
     {
-        //
+        return FcategoryResource::collection(fcategory::latest()->get());
+
+
     }
 
     /**
@@ -35,7 +41,11 @@ class FcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fcategory = new Fcategory;
+        $fcategory->name = $request->name;
+        $fcategory->slug = str_slug($request->name);
+        $fcategory->save();
+        return response('created', \Symfony\Component\HttpFoundation\Response::HTTP_CREATED);
     }
 
     /**
@@ -46,7 +56,8 @@ class FcategoryController extends Controller
      */
     public function show(Fcategory $fcategory)
     {
-        //
+        return new FcategoryResource($fcategory);
+
     }
 
     /**
@@ -69,7 +80,13 @@ class FcategoryController extends Controller
      */
     public function update(Request $request, Fcategory $fcategory)
     {
-        //
+        $fcategory->update(
+            [
+                'name'=>$request->name,
+                'slug'=>str_slug($request->name)
+            ]
+        );
+        return response('Updated', Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -80,6 +97,7 @@ class FcategoryController extends Controller
      */
     public function destroy(Fcategory $fcategory)
     {
-        //
+        $fcategory->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

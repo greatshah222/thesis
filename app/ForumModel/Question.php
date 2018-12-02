@@ -7,7 +7,7 @@ use App\User;
 
 class Question extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['title','slug','body','user_id','category_id'];
 
 
     public function getRouteKeyName()
@@ -17,13 +17,13 @@ class Question extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+       return $this->belongsTo(User::class);
     }
     public function replies()
     {
         return $this->hasMany(Reply::class)->latest();
     }
-    
+
     public function fcategory()
     {
         return $this->belongsTo(Fcategory::class);
@@ -33,3 +33,5 @@ class Question extends Model
         return "/question/$this->slug";
     }
 }
+
+
