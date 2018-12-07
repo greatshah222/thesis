@@ -17,6 +17,7 @@ Route::view('try/{any}','forum/home');
 
 
 Route::get('/','FrontController@index')->name('name');
+Route::post('subscribe', 'FrontController@subscribe');
 
 
 
