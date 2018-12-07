@@ -47,13 +47,11 @@
 </head>
 <body>
 <div id="app">
-    @include('_includes.navbar.head')
 
 
     <main class="py-4">
         @yield('content')
     </main>
-    @include('_includes.navbar.footer')
 
 </div>
 

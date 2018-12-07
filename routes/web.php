@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::view('try','forum/home');
+Route::view('try/{any}','forum/home');
+
+
 Route::get('/','FrontController@index')->name('name');
+
 
 
 Auth::routes();
@@ -45,7 +48,7 @@ Route::resource('tags','TagController',['except'=>['create']]);
 
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
     Route::get('blog/{slug}','BlogController@getSingle')->name('blog.single')->where('slug','[\w\d\-\_]+');
     Route::get('blog','BlogController@getIndex')->name('blog.index');
 
@@ -78,7 +81,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::delete('photo/{id}','PhotoController@destroy')->name('photo.destroy');
 });
 
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'web'], function () {
     Route::get('/settings','SettingsController@index')->name('settings');
     Route::post('/settings/update','SettingsController@update')->name('settings.update');
 

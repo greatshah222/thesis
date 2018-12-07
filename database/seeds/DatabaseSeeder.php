@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //$this->call(UsersTableSeeder::class);
-        //$this->call(SettingsTableSeeder::class);
-        factory(User::class, 2)->create();
+        $this->call(SettingsTableSeeder::class);
+        factory(User::class, 1)->create();
         factory(Fcategory::class, 2)->create();
         factory(Question::class, 2)->create();
-        factory(Reply::class, 5)->create()->each(function ($reply) {
+        factory(Reply::class, 1)->create()->each(function ($reply) {
             return $reply->like()->save(factory(Like::class)->make());
         });
     }
