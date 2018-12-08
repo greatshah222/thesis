@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\SignupRequest;
-
 class AuthController extends Controller
 {
     /**
@@ -13,14 +12,14 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['flogin','fsignup']]);
+        $this->middleware('JWT', ['except' => ['login','signup']]);
     }
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function flogin()
+    public function login()
     {
         $credentials = request(['email', 'password']);
         if (! $token = auth()->attempt($credentials)) {
@@ -28,17 +27,16 @@ class AuthController extends Controller
         }
         return $this->respondWithToken($token);
     }
+    public function signup(SignupRequest $request)
+    {
+        User::create($request->all());
+        return $this->login($request);
+    }
     /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-
-    public function fsignup(SignupRequest $request)
-    {
-        User::create($request->all());
-        return $this->flogin($request);
-    }
     public function me()
     {
         return response()->json(auth()->user());
@@ -48,9 +46,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function flogout()
+    public function logout()
     {
-        auth()->flogout();
+        auth()->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
     /**
@@ -77,5 +75,9 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()->name
         ]);
+    }
+    public  function payload()
+    {
+        return auth()->payload();
     }
 }

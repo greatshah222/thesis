@@ -21,16 +21,16 @@
             return {
                 items: [
                     {title : 'Forum', to:'/thesis_new/public/try/forum',show:true},
-                    {title : 'Ask Question', to:'/ask',show: User.floggedIn()},
-                    {title : 'Category', to:'/category',show: User.floggedIn()},
-                    {title : 'Login', to:'/thesis_new/public/try/flogin',show: !User.floggedIn()},
-                    {title : 'Logout', to:'/thesis_new/public/try/flogout',show: User.floggedIn()},
+                    {title : 'Ask Question', to:'/ask',show: User.loggedIn()},
+                    {title : 'Category', to:'/category',show: User.loggedIn()},
+                    {title : 'Login', to:'/thesis_new/public/try/flogin',show: !User.loggedIn()},
+                    {title : 'Logout', to:'/thesis_new/public/try/flogout',show: User.loggedIn()},
                 ]
             }
         },
         created(){
-            EventBus.$on('flogout', () => {
-                User.flogout()
+            EventBus.$on('logout', () => {
+                User.logout()
         })
         }
     }

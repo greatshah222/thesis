@@ -70547,11 +70547,11 @@ var User = function () {
     }
 
     _createClass(User, [{
-        key: 'flogin',
-        value: function flogin(data) {
+        key: 'login',
+        value: function login(data) {
             var _this = this;
 
-            axios.post('/thesis_new/public/api/auth/try/flogin', data).then(function (res) {
+            axios.post('/thesis_new/public/api/auth/flogin', data).then(function (res) {
                 return _this.responseAfterLogin(res);
             }).catch(function (error) {
                 return console.log(error.response.data);
@@ -70578,27 +70578,27 @@ var User = function () {
             return false;
         }
     }, {
-        key: 'floggedIn',
-        value: function floggedIn() {
+        key: 'loggedIn',
+        value: function loggedIn() {
             return this.hasToken();
         }
     }, {
-        key: 'flogout',
-        value: function flogout() {
+        key: 'logout',
+        value: function logout() {
             __WEBPACK_IMPORTED_MODULE_1__AppStorage__["a" /* default */].clear();
             window.location = '/thesis_new/public/try/forum';
         }
     }, {
         key: 'name',
         value: function name() {
-            if (this.floggedIn()) {
+            if (this.loggedIn()) {
                 return __WEBPACK_IMPORTED_MODULE_1__AppStorage__["a" /* default */].getUser();
             }
         }
     }, {
         key: 'id',
         value: function id() {
-            if (this.floggedIn()) {
+            if (this.loggedIn()) {
                 var payload = __WEBPACK_IMPORTED_MODULE_0__Token__["a" /* default */].payload(__WEBPACK_IMPORTED_MODULE_1__AppStorage__["a" /* default */].getToken());
                 return payload.sub;
             }
@@ -70629,8 +70629,9 @@ var Token = function () {
         value: function isValid(token) {
             var payload = this.payload(token);
             if (payload) {
-                return payload.iss == "http://localhost:8888/thesis_new/public/api/auth/try/flogin" || "http://localhost:8888/thesis_new/public/api/auth/try/fsignup" ? true : false;
+                return payload.iss == "http://localhost:8888/thesis_new/public/api/auth/flogin" || "http://localhost:8888/thesis_new/public/api/auth/fsignup" ? true : false;
             }
+
             return false;
         }
     }, {
@@ -70790,7 +70791,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70846,7 +70847,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
 
 
 
@@ -70973,12 +70975,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            items: [{ title: 'Forum', to: '/thesis_new/public/try/forum', show: true }, { title: 'Ask Question', to: '/ask', show: User.floggedIn() }, { title: 'Category', to: '/category', show: User.floggedIn() }, { title: 'Login', to: '/thesis_new/public/try/flogin', show: !User.floggedIn() }, { title: 'Logout', to: '/thesis_new/public/try/flogout', show: User.floggedIn() }]
+            items: [{ title: 'Forum', to: '/thesis_new/public/try/forum', show: true }, { title: 'Ask Question', to: '/ask', show: User.loggedIn() }, { title: 'Category', to: '/category', show: User.loggedIn() }, { title: 'Login', to: '/thesis_new/public/try/flogin', show: !User.loggedIn() }, { title: 'Logout', to: '/thesis_new/public/try/flogout', show: User.loggedIn() }]
         };
     },
     created: function created() {
-        EventBus.$on('flogout', function () {
-            User.flogout();
+        EventBus.$on('logout', function () {
+            User.logout();
         });
     }
 });
@@ -71202,7 +71204,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71213,6 +71215,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -71249,14 +71259,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        if (User.floggedIn()) {
+        if (User.loggedIn()) {
             this.$router.push({ name: 'forum' });
         }
     },
 
     methods: {
-        flogin: function flogin() {
-            User.flogin(this.form);
+        login: function login() {
+            User.login(this.form);
         }
     }
 });
@@ -71278,7 +71288,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.flogin($event)
+              return _vm.login($event)
             }
           }
         },
@@ -71342,7 +71352,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("toolbar"), _vm._v(" "), _c("flogin"), _vm._v(" "), _c("router-view")],
+    [
+      _c("toolbar"),
+      _vm._v(" "),
+      _c("router-view"),
+      _vm._v(" "),
+      _c("app-footer")
+    ],
     1
   )
 }
@@ -74099,7 +74115,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74110,6 +74126,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -74167,16 +74190,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        if (User.floggedIn()) {
+        if (User.loggedIn()) {
             this.$router.push({ name: 'forum' });
         }
     },
 
     methods: {
-        fsignup: function fsignup() {
+        signup: function signup() {
             var _this = this;
 
-            axios.post('/thesis_new/public/api/auth/try/fsignup', this.form).then(function (res) {
+            axios.post('/thesis_new/public/api/auth/fsignup', this.form).then(function (res) {
                 User.responseAfterLogin(res);
                 _this.$router.push({ name: 'forum' });
             }).catch(function (error) {
@@ -74203,7 +74226,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.fsignup($event)
+              return _vm.signup($event)
             }
           }
         },
@@ -74479,7 +74502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
-        EventBus.$emit('flogout');
+        EventBus.$emit('logout');
     }
 });
 

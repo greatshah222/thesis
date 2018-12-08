@@ -1,6 +1,9 @@
+
+
+
 <template>
     <v-container>
-        <v-form @submit.prevent="fsignup">
+        <v-form @submit.prevent="signup">
             <v-text-field
                     label="Name"
                     v-model="form.name"
@@ -17,6 +20,7 @@
                     required
             ></v-text-field>
             <span class="red--text" v-if="errors.email">{{errors.email[0]}}</span>
+
             <v-text-field
                     label="Password"
                     v-model="form.password"
@@ -31,16 +35,19 @@
                     type="password"
                     required
             ></v-text-field>
+
             <v-btn
                     color="green"
                     type="submit"
             >Sign Up</v-btn>
+
             <router-link to="/thesis_new/public/try/flogin">
                 <v-btn color="blue">Login</v-btn>
             </router-link>
         </v-form>
     </v-container>
 </template>
+
 <script>
     export default {
         data(){
@@ -55,13 +62,13 @@
             }
         },
         created(){
-            if(User.floggedIn()){
+            if(User.loggedIn()){
                 this.$router.push({name:'forum'})
             }
         },
         methods:{
-            fsignup(){
-                axios.post('/thesis_new/public/api/auth/try/fsignup',this.form)
+            signup(){
+                axios.post('/thesis_new/public/api/auth/fsignup',this.form)
                     .then(res => {
                     User.responseAfterLogin(res)
                 this.$router.push({name:'forum'})
@@ -71,5 +78,6 @@
         }
     }
 </script>
+
 <style>
 </style>

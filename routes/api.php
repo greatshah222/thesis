@@ -11,13 +11,15 @@ Route::group([
     'prefix' => 'auth',
     'middleware'=>'api'
 
-], function () {
+], function ($router) {
 
-    Route::post('flogin', 'AuthController@flogin');
-    Route::post('flogout', 'AuthController@flogout');
+    Route::post('flogin', 'AuthController@login');
+    Route::post('flogout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::post('fsignup', 'AuthController@fsignup');
+    Route::post('fsignup', 'AuthController@signup');
+    Route::post('payload', 'AuthController@payload');
+
 
 });
 
