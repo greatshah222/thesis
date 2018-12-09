@@ -7,12 +7,17 @@ import Forum from '../components/forum/forum'
 import Logout from '../components/login/Logout'
 import Read from '../components/forum/read'
 import Create from '../components/forum/create'
+import CreateCategory from '../components/fcategory/CreateCategory'
+
+
 
 
 const routes = [
     { path: '/thesis_new/public/try/flogin', component: Login },
     { path: '/thesis_new/public/try/flogout', component: Logout },
     { path: '/thesis_new/public/try/fsignup', component: Singup },
+    { path: '/thesis_new/public/try/fcategory', component: CreateCategory },
+
     { path: '/thesis_new/public/try/forum', component: Forum , name:'forum'},
     { path: '/thesis_new/public/try/question/:slug', component: Read , name:'read'},
     { path: '/thesis_new/public/try/ask', component: Create},

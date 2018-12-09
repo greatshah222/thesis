@@ -49,7 +49,7 @@ class FcategoryController extends Controller
         $fcategory->name = $request->name;
         $fcategory->slug = str_slug($request->name);
         $fcategory->save();
-        return response('created', \Symfony\Component\HttpFoundation\Response::HTTP_CREATED);
+        return response(new FcategoryResource($fcategory), Response::HTTP_CREATED);
     }
 
     /**
@@ -90,7 +90,7 @@ class FcategoryController extends Controller
                 'slug'=>str_slug($request->name)
             ]
         );
-        return response('Updated', Response::HTTP_ACCEPTED);
+        return response(new FcategoryResource($fcategory), Response::HTTP_ACCEPTED);
     }
 
     /**

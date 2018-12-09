@@ -8,11 +8,14 @@
                         :data=question
                 ></question>
             </v-flex>
-            sidebar
-        </v-layout>
+            <v-flex xs4>
+                <app-sidebar></app-sidebar>
+            </v-flex>        </v-layout>
     </v-container>
 </template>
 <script>
+    import AppSidebar from './AppSidebar'
+
     import question from './question'
     export default {
         data(){
@@ -20,7 +23,7 @@
                 questions:{}
             }
         },
-        components:{question},
+        components:{question,AppSidebar},
         created(){
             axios.get('/thesis_new/public/api/question/')
                 .then(res => this.questions = res.data.data)
