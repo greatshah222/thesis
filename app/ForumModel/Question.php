@@ -7,7 +7,15 @@ use App\User;
 
 class Question extends Model
 {
-    protected $fillable = ['title','slug','body','user_id','category_id'];
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($question) {
+            $question->slug = str_slug($question->title);
+        });
+    }
+
+    protected $fillable = ['title','slug','body','user_id','fcategory_id'];
 
 
     public function getRouteKeyName()
@@ -30,8 +38,10 @@ class Question extends Model
     }
     public function getPathAttribute()
     {
-        return "/question/$this->slug";
+        return "/thesis_new/public/try/question/$this->slug";
+
     }
+
 }
 
 

@@ -21,8 +21,8 @@
             return {
                 items: [
                     {title : 'Forum', to:'/thesis_new/public/try/forum',show:true},
-                    {title : 'Ask Question', to:'/ask',show: User.loggedIn()},
-                    {title : 'Category', to:'/category',show: User.loggedIn()},
+                    {title : 'Ask Question', to:'/thesis_new/public/try/ask',show: User.loggedIn()},
+                    {title : 'Category', to:'/thesis_new/public/try/category',show: User.loggedIn()},
                     {title : 'Login', to:'/thesis_new/public/try/flogin',show: !User.loggedIn()},
                     {title : 'Logout', to:'/thesis_new/public/try/flogout',show: User.loggedIn()},
                 ]
