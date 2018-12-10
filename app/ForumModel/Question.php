@@ -16,6 +16,8 @@ class Question extends Model
     }
 
     protected $fillable = ['title','slug','body','user_id','fcategory_id'];
+    protected $with = ['replies'];
+
 
 
     public function getRouteKeyName()
