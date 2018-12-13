@@ -14,6 +14,7 @@
 
 Route::view('try','forum/home');
 Route::view('try/{any}','forum/home');
+
 Route::view('try/{any}/{any1}','forum/home');
 
 

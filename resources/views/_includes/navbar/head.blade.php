@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{url('/')}}">Home</a></li>
-                        {
+
 
                     @if (Route::has('login'))
                             @auth

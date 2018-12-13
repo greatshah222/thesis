@@ -3,7 +3,9 @@
     <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
     <v-toolbar-title>Village Dev</v-toolbar-title>
     <v-spacer></v-spacer>
-        <div class="hidden-sm-and-down">
+    <app-notification v-if="loggedIn"></app-notification>
+
+    <div class="hidden-sm-and-down">
             <router-link
                     v-for="item in items"
                     :key="item.title"
@@ -16,11 +18,20 @@
 </template>
 
 <script>
+    import AppNotification from './AppNotification'
+
     export default {
+        components:{AppNotification},
+
         data(){
             return {
+                loggedIn: User.loggedIn(),
+
                 items: [
                     {title : 'Forum', to:'/thesis_new/public/try/forum',show:true},
+                    {title : 'main', to:'/thesis_new/public/',show:true},
+
+
                     {title : 'Ask Question', to:'/thesis_new/public/try/ask',show: User.loggedIn()},
                     {title : 'Category', to:'/thesis_new/public/try/fcategory',show: User.admin()},
                     {title : 'Login', to:'/thesis_new/public/try/flogin',show: !User.loggedIn()},
